@@ -37,7 +37,7 @@ public class ManagerService extends ServiceImpl<ManagerMapper, Manager> {
         Page<Manager> userPage = new Page<>(pageNum, pageSize);
         LambdaQueryWrapper<Manager> queryWrapper = new LambdaQueryWrapper<>();
         if(!StringUtils.isBlank(name)) {
-            queryWrapper.eq(Manager::getName, name);
+            queryWrapper.like(Manager::getName, name);
         }
         IPage<Manager> result = baseMapper.selectPage(userPage, queryWrapper);
         setRoleName(result);

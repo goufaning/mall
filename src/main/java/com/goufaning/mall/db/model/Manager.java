@@ -30,7 +30,7 @@ public class Manager {
 
     private String email;
 
-    private int state;
+    private boolean state;
 
     /**
      * 角色名称
