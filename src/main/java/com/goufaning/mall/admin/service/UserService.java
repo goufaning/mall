@@ -1,5 +1,7 @@
 package com.goufaning.mall.admin.service;
 
+import com.goufaning.mall.common.result.PageResult;
+
 /**
  * 用户信息service
  *
@@ -8,6 +10,8 @@ package com.goufaning.mall.admin.service;
  * @date 2020-07-10 14:02
  */
 public interface UserService {
+
+    PageResult getUsersPageByName(String name, int pageNum, int pageSize);
 
     void getUser();
 }

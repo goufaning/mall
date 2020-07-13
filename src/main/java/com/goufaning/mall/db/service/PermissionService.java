@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -49,6 +50,7 @@ public class PermissionService extends ServiceImpl<PermissionMapper, Permission>
         String permissionIds = role.getPermissionIds();
         List<Integer> pIdList = WebUtils.stringToList(permissionIds);
         List<Permission> permissionList = getBaseMapper().selectBatchIds(pIdList);
+        permissionList.sort(Comparator.comparingInt(Permission::getOrderNum));
         return permissionList;
     }
 }

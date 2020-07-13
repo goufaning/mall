@@ -112,5 +112,11 @@ public class User extends Model<User> {
     @TableField(value = "update_time")
     private Integer updateTime;
 
+    /**
+     * 角色名称
+     */
+    @TableField(exist = false)
+    private String roleName;
+
 
 }

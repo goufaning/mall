@@ -1,6 +1,7 @@
 package com.goufaning.mall.db.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -30,5 +31,11 @@ public class Manager {
     private String email;
 
     private int state;
+
+    /**
+     * 角色名称
+     */
+    @TableField(exist = false)
+    private String roleName;
 
 }

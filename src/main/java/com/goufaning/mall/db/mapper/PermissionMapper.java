@@ -5,11 +5,12 @@ import com.goufaning.mall.db.model.Permission;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
-* $description
-* @author goufn
-* @date 2020-07-11 11:28
-* @version V1.0
-*/
+ * $description
+ *
+ * @author goufn
+ * @version V1.0
+ * @date 2020-07-13 16:26
+ */
 @Mapper
 public interface PermissionMapper extends BaseMapper<Permission> {
 }

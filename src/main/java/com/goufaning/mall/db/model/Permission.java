@@ -6,16 +6,23 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
-* 权限表
+* $description
 * @author goufn
-* @date 2020-07-11 11:28
+* @date 2020-07-13 16:26
 * @version V1.0
 */
+
+/**
+ * 权限表
+ */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @TableName(value = "mall_permission")
-public class Permission extends Model<Permission> {
+public class Permission extends Model {
+    public static final String COL_ORDER = "order";
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
@@ -48,4 +55,24 @@ public class Permission extends Model<Permission> {
      */
     @TableField(value = "level")
     private Integer level;
+
+    /**
+     * 排序优先级
+     */
+    @TableField(value = "order_num")
+    private Short orderNum;
+
+    public static final String COL_ID = "id";
+
+    public static final String COL_NAME = "name";
+
+    public static final String COL_PARENT_ID = "parent_id";
+
+    public static final String COL_CONTROLLER = "controller";
+
+    public static final String COL_OPERATION = "operation";
+
+    public static final String COL_LEVEL = "level";
+
+    public static final String COL_ORDER_NUM = "order_num";
 }
