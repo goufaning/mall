@@ -25,6 +25,8 @@ public class MenuVo {
 
     private String path;
 
+    private int order;
+
     List<MenuVo> children;
 
     public MenuVo(Permission permission) {
@@ -33,5 +35,6 @@ public class MenuVo {
         this.parentId = permission.getParentId();
         this.level = permission.getLevel();
         this.path = permission.getOperation();
+        this.order = permission.getOrderNum();
     }
 }

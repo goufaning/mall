@@ -13,4 +13,10 @@ public interface MenuService {
 
     List<MenuVo> getMenuTree(String username);
 
+    List<MenuVo> getTreeByRoleId(int roleId);
+
+    List<MenuVo> getTree();
+
+    List<MenuVo> getPermissionList(String name);
+
 }

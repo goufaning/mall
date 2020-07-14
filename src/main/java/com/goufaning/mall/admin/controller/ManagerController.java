@@ -58,7 +58,7 @@ public class ManagerController {
         Manager manager = new Manager(managerVo);
         manager.setState(0);
         manager.setCreateTime(new Date());
-        boolean success = managerService.save(manager);
+        boolean success = manager.insert();
         if (!success) {
             return CommonResult.error("添加失败！请一会后再试试吧～");
         }
@@ -74,7 +74,7 @@ public class ManagerController {
         }
         manager.setEmail(managerVo.getEmail());
         manager.setMobile(managerVo.getMobile());
-        boolean success = managerService.updateById(manager);
+        boolean success = manager.updateById();
         if (!success) {
             return CommonResult.error("修改失败！请一会后再试试吧～");
         }
@@ -88,7 +88,7 @@ public class ManagerController {
         if (manager == null) {
             return CommonResult.error("无该用户");
         }
-        boolean success = managerService.removeById(manager);
+        boolean success = manager.deleteById();
         if (!success) {
             return CommonResult.error("删除失败！请一会后再试试吧～");
         }

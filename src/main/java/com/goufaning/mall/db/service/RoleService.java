@@ -1,11 +1,14 @@
 package com.goufaning.mall.db.service;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.goufaning.mall.common.utils.WebUtils;
 import com.goufaning.mall.db.mapper.RoleMapper;
+import com.goufaning.mall.db.model.Permission;
 import com.goufaning.mall.db.model.Role;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * $description
@@ -16,6 +19,30 @@ import com.goufaning.mall.db.model.Role;
  */
 @Service
 public class RoleService extends ServiceImpl<RoleMapper, Role> {
+    @Autowired
+    private PermissionService permissionService;
+
+    public boolean removePermission(int roleId, int permissionId) {
+        Role role = baseMapper.selectById(roleId);
+        if (role == null) {
+            return false;
+        }
+
+        List<Permission> permissions = permissionService.findChildren(permissionId);
+        for (Permission permission : permissions) {
+            removePermission(roleId, permission.getId());
+        }
+        String permissionIds = role.getPermissionIds();
+        List<Integer> permissionList = WebUtils.stringToList(permissionIds);
+        if (!permissionList.contains(permissionId)) {
+            return true;
+        }
+        permissionList.remove(permissionList.indexOf(permissionId));
+        permissionIds = WebUtils.listToString(permissionList);
+        role.setPermissionIds(permissionIds);
+        return role.updateById();
+    }
+
 
 }
 

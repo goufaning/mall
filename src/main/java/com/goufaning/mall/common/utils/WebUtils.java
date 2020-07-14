@@ -17,7 +17,7 @@ public class WebUtils {
         return collection == null || collection.isEmpty();
     }
 
-    private static String listToString(Collection<?> collection) {
+    public static String listToString(Collection<?> collection) {
         if (isEmptyList(collection)) {
             return "";
         }
