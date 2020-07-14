@@ -27,12 +27,24 @@ public class ManagerService extends ServiceImpl<ManagerMapper, Manager> {
     private RoleService roleService;
 
 
+    /**
+     * 通过 name 查找
+     * @param name
+     * @return
+     */
     public Manager findByName(String name) {
         LambdaQueryWrapper<Manager> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Manager::getName, name);
         return this.getOne(wrapper);
     }
 
+    /**
+     * 分页查询
+     * @param name  可以为空
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     public PageResult getPageByName(String name, int pageNum, int pageSize) {
         Page<Manager> userPage = new Page<>(pageNum, pageSize);
         LambdaQueryWrapper<Manager> queryWrapper = new LambdaQueryWrapper<>();
@@ -55,7 +67,9 @@ public class ManagerService extends ServiceImpl<ManagerMapper, Manager> {
             Manager manager = (Manager) object;
             int roleId = manager.getRoleId();
             Role role = roleService.getById(roleId);
-            manager.setRoleName(role.getName());
+            if (role != null) {
+                manager.setRoleName(role.getName());
+            }
         }
     }
 

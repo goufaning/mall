@@ -8,9 +8,17 @@ import lombok.Data;
  * @date 2020/7/13 10:37 下午
  */
 @Data
-public class ManagerStateVo {
+public class ManagerVo {
 
     private int userId;
+
+    private String name;
+
+    private String password;
+
+    private String email;
+
+    private String mobile;
 
     private int state;
 }
