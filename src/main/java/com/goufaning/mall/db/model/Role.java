@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
 public class Role extends Model {
 
     @TableId(value = "id", type = IdType.AUTO)
-    private Short id;
+    private Integer id;
 
     /**
      * 角色名称
