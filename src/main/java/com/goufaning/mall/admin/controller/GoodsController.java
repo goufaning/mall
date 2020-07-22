@@ -6,12 +6,11 @@ import com.goufaning.mall.common.page.PageRequest;
 import com.goufaning.mall.common.result.CommonResult;
 import com.goufaning.mall.common.result.PageResult;
 import com.goufaning.mall.common.utils.StringUtils;
+import com.goufaning.mall.db.model.GoodsCate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,15 +38,33 @@ public class GoodsController {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         if (pageNum == 0 || pageSize == 0) {
-            return getCategoriesList(type);
+            pageNum = 1;
+            pageSize = 100;
         }
         PageResult page = goodsCateService.getPageByType(type, pageNum, pageSize);
         return CommonResult.success(page);
     }
 
-    @PostMapping("/categories/list")
-    public CommonResult getCategoriesList(int type) {
+    @GetMapping("/categories/list")
+    public CommonResult getCategoriesList(@RequestParam int type) {
         List<CategoriesVo> categories = goodsCateService.getCategoriesByType(type);
         return CommonResult.success(categories);
+    }
+
+
+    @PostMapping("/categories/add")
+    public CommonResult addCategories(@RequestBody CategoriesVo categoriesVo) {
+        GoodsCate goodsCate = new GoodsCate();
+        goodsCate.setCatName(categoriesVo.getName());
+        goodsCate.setParentId(categoriesVo.getParentId());
+        goodsCate.setCatSort(1);
+        goodsCate.setDataFlag(1);
+        goodsCate.setIsShow(1);
+        goodsCate.setCreateTime(new Date());
+        boolean success = goodsCate.insert();
+        if (!success) {
+            return CommonResult.error("插入失败！请稍后再试试");
+        }
+        return CommonResult.success("插入成功");
     }
 }

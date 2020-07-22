@@ -1,5 +1,6 @@
 package com.goufaning.mall.bean.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.goufaning.mall.db.model.Permission;
 import lombok.Data;
 
@@ -27,6 +28,7 @@ public class MenuVo {
 
     private int order;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     List<MenuVo> children;
 
     public MenuVo(Permission permission) {

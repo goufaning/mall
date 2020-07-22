@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 /**
 * $description
 * @author goufn
@@ -58,5 +60,5 @@ public class GoodsCate extends Model {
      * 创建时间
      */
     @TableField(value = "create_time")
-    private Integer createTime;
+    private Date createTime;
 }

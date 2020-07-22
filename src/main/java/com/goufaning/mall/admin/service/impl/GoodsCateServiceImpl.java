@@ -67,21 +67,19 @@ public class GoodsCateServiceImpl extends ServiceImpl<GoodsCateMapper, GoodsCate
      * @param level parent level
      */
     private void setChildren(List<CategoriesVo> parents, List<GoodsCate> cates, int level, int maxLevel) {
-        // 孩子等级超过level,直接跳过
-        if (level + 1 > maxLevel) {
-            return;
-        }
         for (CategoriesVo parent : parents) {
             parent.setLevel(level);
-            List<CategoriesVo> children = new ArrayList<>();
-            for (GoodsCate cate : cates) {
-                if (cate.getParentId() == parent.getId()) {
-                    CategoriesVo vo = new CategoriesVo(cate);
-                    children.add(vo);
+            if (level + 1 <= maxLevel) {
+                List<CategoriesVo> children = new ArrayList<>();
+                for (GoodsCate cate : cates) {
+                    if (cate.getParentId() == parent.getId()) {
+                        CategoriesVo vo = new CategoriesVo(cate);
+                        children.add(vo);
+                    }
                 }
+                parent.setChildren(children);
+                setChildren(children, cates, level + 1, maxLevel);
             }
-            parent.setChildren(children);
-            setChildren(children, cates, level + 1, maxLevel);
         }
     }
 }

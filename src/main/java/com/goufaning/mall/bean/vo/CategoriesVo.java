@@ -1,7 +1,9 @@
 package com.goufaning.mall.bean.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.goufaning.mall.db.model.GoodsCate;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
  * @date 2020-07-15 15:27
  */
 @Data
+@NoArgsConstructor
 public class CategoriesVo {
 
     private int id;
@@ -25,6 +28,7 @@ public class CategoriesVo {
 
     private boolean deleted;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<CategoriesVo> children;
 
     public CategoriesVo(GoodsCate goodsCate) {
