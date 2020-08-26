@@ -1,5 +1,7 @@
 package com.goufaning.mall.common.result;
 
+import lombok.Data;
+
 /**
  * 通用返回对象
  *
@@ -7,15 +9,16 @@ package com.goufaning.mall.common.result;
  * @version V1.0
  * @date 2020-07-09 14:18
  */
+@Data
 public class CommonResult<T> {
     /**
      * 返回码
      */
-    private long code;
+    private long errno;
     /**
      * 返回信息
      */
-    private String msg;
+    private String errmsg;
     /**
      * 返回数据
      */
@@ -24,9 +27,9 @@ public class CommonResult<T> {
     protected CommonResult() {
     }
 
-    protected CommonResult(long code, String msg, T data) {
-        this.code = code;
-        this.msg = msg;
+    protected CommonResult(long errno, String errmsg, T data) {
+        this.errno = errno;
+        this.errmsg = errmsg;
         this.data = data;
     }
 
@@ -119,28 +122,5 @@ public class CommonResult<T> {
         return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
     }
 
-    public long getCode() {
-        return code;
-    }
-
-    public void setCode(long code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
 }
 
