@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.goufaning.mall.admin.service.MenuService;
 import com.goufaning.mall.bean.vo.MenuVo;
 import com.goufaning.mall.common.utils.StringUtils;
-import com.goufaning.mall.db.model.Permission;
-import com.goufaning.mall.db.service.PermissionService;
+import com.goufaning.mall.db.model.AdminPermission;
+import com.goufaning.mall.db.service.AdminPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +23,14 @@ import java.util.List;
 public class MenuServiceImpl implements MenuService {
 
     @Autowired
-    private PermissionService permissionService;
+    private AdminPermissionService adminPermissionService;
 
 
     @Override
     public List<MenuVo> getMenuTree(String managerName) {
         List<MenuVo> parentList = new ArrayList<>();
-        List<Permission> permissions = permissionService.findListByManagerName(managerName);
-        for (Permission permission : permissions) {
+        List<AdminPermission> permissions = adminPermissionService.findListByManagerName(managerName);
+        for (AdminPermission permission : permissions) {
             if (permission.getLevel() == 1) {
                 MenuVo menuVo = new MenuVo(permission);
                 parentList.add(menuVo);
@@ -43,8 +43,8 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuVo> getTree() {
         List<MenuVo> parentList = new ArrayList<>();
-        List<Permission> permissions = permissionService.list();
-        for (Permission permission : permissions) {
+        List<AdminPermission> permissions = adminPermissionService.list();
+        for (AdminPermission permission : permissions) {
             if (permission.getLevel() == 1) {
                 MenuVo menuVo = new MenuVo(permission);
                 parentList.add(menuVo);
@@ -57,8 +57,8 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuVo> getTreeByRoleId(int roleId) {
         List<MenuVo> parentList = new ArrayList<>();
-        List<Permission> permissions = permissionService.findListByRoleId(roleId);
-        for (Permission permission : permissions) {
+        List<AdminPermission> permissions = adminPermissionService.findListByRoleId(roleId);
+        for (AdminPermission permission : permissions) {
             if (permission.getLevel() == 1) {
                 MenuVo menuVo = new MenuVo(permission);
                 parentList.add(menuVo);
@@ -71,22 +71,22 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuVo> getPermissionList(String name) {
         List<MenuVo> parentList = new ArrayList<>();
-        LambdaQueryWrapper<Permission> wrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<AdminPermission> wrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isBlank(name)) {
-            wrapper.eq(Permission::getName, name);
+            wrapper.eq(AdminPermission::getName, name);
         }
-        List<Permission> permissions = permissionService.list(wrapper);
-        for (Permission permission : permissions) {
+        List<AdminPermission> permissions = adminPermissionService.list(wrapper);
+        for (AdminPermission permission : permissions) {
             MenuVo menuVo = new MenuVo(permission);
             parentList.add(menuVo);
         }
         return parentList;
     }
 
-    private void findChildren(List<MenuVo> parentList, List<Permission> childList) {
+    private void findChildren(List<MenuVo> parentList, List<AdminPermission> childList) {
         for (MenuVo parent : parentList) {
             List<MenuVo> children = new ArrayList<>();
-            for (Permission permission : childList) {
+            for (AdminPermission permission : childList) {
                 if (permission.getParentId() == parent.getId()) {
                     MenuVo menuVo = new MenuVo(permission);
                     children.add(menuVo);

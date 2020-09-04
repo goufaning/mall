@@ -9,7 +9,7 @@ import com.goufaning.mall.common.result.PageResult;
  * @version V1.0
  * @date 2020-07-10 14:02
  */
-public interface UserService {
+public interface AdminUserService {
 
     PageResult getUsersPageByName(String name, int pageNum, int pageSize);
 

@@ -8,115 +8,152 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 /**
 * $description
 * @author goufn
-* @date 2020-07-11 11:40
+* @date 2020/8/31 2:24 下午
 * @version V1.0
 */
 
 /**
- * 会员表
+ * 用户表
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "mall_user")
-public class User extends Model<User> {
-    /**
-     * 自增id
-     */
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Integer userId;
+@TableName(value = "litemall_user")
+public class User extends Model {
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     /**
-     * 登录名
+     * 用户名称
      */
     @TableField(value = "username")
     private String username;
 
     /**
-     * qq官方唯一编号信息
+     * 用户密码
      */
-    @TableField(value = "qq_open_id")
-    private String qqOpenId;
-
-    /**
-     * 登录密码
-     */
-    @TableField(value = "password")
+    @TableField(value = "`password`")
     private String password;
 
     /**
-     * 邮箱
+     * 性别：0 未知， 1男， 1 女
      */
-    @TableField(value = "user_email")
-    private String userEmail;
+    @TableField(value = "gender")
+    private Byte gender;
 
     /**
-     * 新用户注册邮件激活唯一校验码
+     * 生日
      */
-    @TableField(value = "user_email_code")
-    private String userEmailCode;
+    @TableField(value = "birthday")
+    private Date birthday;
 
     /**
-     * 新用户是否已经通过邮箱激活帐号
+     * 最近一次登录时间
      */
-    @TableField(value = "is_active")
-    private Integer isActive;
+    @TableField(value = "last_login_time")
+    private Date lastLoginTime;
 
     /**
-     * 性别
+     * 最近一次登录IP地址
      */
-    @TableField(value = "user_sex")
-    private String userSex;
+    @TableField(value = "last_login_ip")
+    private String lastLoginIp;
 
     /**
-     * qq
+     * 0 普通用户，1 VIP用户，2 高级VIP用户
      */
-    @TableField(value = "user_qq")
-    private String userQq;
+    @TableField(value = "user_level")
+    private Byte userLevel;
 
     /**
-     * 手机
+     * 用户昵称或网络名称
      */
-    @TableField(value = "user_tel")
-    private String userTel;
+    @TableField(value = "nickname")
+    private String nickname;
 
     /**
-     * 学历
+     * 用户手机号码
      */
-    @TableField(value = "user_xueli")
-    private String userXueli;
+    @TableField(value = "mobile")
+    private String mobile;
 
     /**
-     * 爱好
+     * 用户头像图片
      */
-    @TableField(value = "user_hobby")
-    private String userHobby;
+    @TableField(value = "avatar")
+    private String avatar;
 
     /**
-     * 简介
+     * 微信登录openid
      */
-    @TableField(value = "user_introduce")
-    private String userIntroduce;
+    @TableField(value = "weixin_openid")
+    private String weixinOpenid;
+
+    /**
+     * 微信登录会话KEY
+     */
+    @TableField(value = "session_key")
+    private String sessionKey;
+
+    /**
+     * 0 可用, 1 禁用, 2 注销
+     */
+    @TableField(value = "`status`")
+    private Byte status;
 
     /**
      * 创建时间
      */
-    @TableField(value = "create_time")
-    private Integer createTime;
+    @TableField(value = "add_time")
+    private Date addTime;
 
     /**
-     * 修改时间
+     * 更新时间
      */
     @TableField(value = "update_time")
-    private Integer updateTime;
+    private Date updateTime;
 
     /**
-     * 角色名称
+     * 逻辑删除
      */
-    @TableField(exist = false)
-    private String roleName;
+    @TableField(value = "deleted")
+    private Boolean deleted;
 
+    public static final String COL_ID = "id";
 
+    public static final String COL_USERNAME = "username";
+
+    public static final String COL_PASSWORD = "password";
+
+    public static final String COL_GENDER = "gender";
+
+    public static final String COL_BIRTHDAY = "birthday";
+
+    public static final String COL_LAST_LOGIN_TIME = "last_login_time";
+
+    public static final String COL_LAST_LOGIN_IP = "last_login_ip";
+
+    public static final String COL_USER_LEVEL = "user_level";
+
+    public static final String COL_NICKNAME = "nickname";
+
+    public static final String COL_MOBILE = "mobile";
+
+    public static final String COL_AVATAR = "avatar";
+
+    public static final String COL_WEIXIN_OPENID = "weixin_openid";
+
+    public static final String COL_SESSION_KEY = "session_key";
+
+    public static final String COL_STATUS = "status";
+
+    public static final String COL_ADD_TIME = "add_time";
+
+    public static final String COL_UPDATE_TIME = "update_time";
+
+    public static final String COL_DELETED = "deleted";
 }

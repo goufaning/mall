@@ -24,6 +24,6 @@ public class RoleVo {
     public RoleVo(Role role) {
         this.id = role.getId();
         this.roleName = role.getName();
-        this.roleDesc = role.getDescription();
+//        this.roleDesc = role.getDescription();
     }
 }

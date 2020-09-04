@@ -122,5 +122,9 @@ public class CommonResult<T> {
         return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
     }
 
+    public static <T> CommonResult<T> badArgumentValue() {
+        return new CommonResult<T>(ResultCode.BAD_ARGUEMENT_VALUE.getCode(), ResultCode.BAD_ARGUEMENT_VALUE.getMessage(), null);
+    }
+
 }
 

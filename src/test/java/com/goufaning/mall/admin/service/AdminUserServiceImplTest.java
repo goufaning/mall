@@ -14,14 +14,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MallApplication.class)
-public class UserServiceImplTest {
+public class AdminUserServiceImplTest {
 
     @Autowired
-    private UserService userService;
+    private AdminUserService adminUserService;
 
 
     @Test
     public void getUser() {
-        userService.getUser();
+        adminUserService.getUser();
     }
 }

@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  *
  * @author goufn
  * @version V1.0
- * @date 2020-07-11 15:47
+ * @date 2020/8/31 2:24 下午
  */
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {

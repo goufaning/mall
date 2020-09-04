@@ -84,7 +84,7 @@ public class RoleController {
         if (role == null) {
             return CommonResult.error("没有该角色");
         }
-        role.setPermissionIds(rightIds);
+//        role.setPermissionIds(rightIds);
         boolean success = role.updateById();
         if (!success) {
             return CommonResult.error("设置失败");

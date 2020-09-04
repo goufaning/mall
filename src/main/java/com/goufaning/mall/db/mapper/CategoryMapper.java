@@ -5,9 +5,11 @@ import com.goufaning.mall.db.model.Category;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
+ * $description
+ *
  * @author goufn
  * @version V1.0
- * @date 2020-08-13 17:03
+ * @date 2020/8/31 2:24 下午
  */
 @Mapper
 public interface CategoryMapper extends BaseMapper<Category> {

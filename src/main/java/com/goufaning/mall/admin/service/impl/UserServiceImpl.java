@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.goufaning.mall.admin.service.UserService;
+import com.goufaning.mall.admin.service.AdminUserService;
 import com.goufaning.mall.common.result.PageResult;
 import com.goufaning.mall.common.utils.StringUtils;
 import com.goufaning.mall.db.mapper.ManagerMapper;
@@ -24,7 +24,7 @@ import java.util.List;
  * @date 2020-07-10 14:01
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements AdminUserService {
 
     @Autowired
     private ManagerMapper managerMapper;

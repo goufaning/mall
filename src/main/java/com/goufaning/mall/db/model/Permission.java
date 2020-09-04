@@ -5,13 +5,14 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
 * $description
 * @author goufn
-* @date 2020-07-13 16:26
+* @date 2020/8/31 2:24 下午
 * @version V1.0
 */
 
@@ -20,59 +21,50 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "mall_permission")
+@TableName(value = "litemall_permission")
 public class Permission extends Model {
-    public static final String COL_ORDER = "order";
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 权限名称
+     * 角色ID
      */
-    @TableField(value = "name")
-    private String name;
+    @TableField(value = "role_id")
+    private Integer roleId;
 
     /**
-     * 父id
+     * 权限
      */
-    @TableField(value = "parent_id")
-    private Short parentId;
+    @TableField(value = "permission")
+    private String permission;
 
     /**
-     * 控制器
+     * 创建时间
      */
-    @TableField(value = "controller")
-    private String controller;
+    @TableField(value = "add_time")
+    private Date addTime;
 
     /**
-     * 操作方法
+     * 更新时间
      */
-    @TableField(value = "operation")
-    private String operation;
+    @TableField(value = "update_time")
+    private Date updateTime;
 
     /**
-     * 权限等级
+     * 逻辑删除
      */
-    @TableField(value = "level")
-    private Integer level;
-
-    /**
-     * 排序优先级
-     */
-    @TableField(value = "order_num")
-    private Short orderNum;
+    @TableField(value = "deleted")
+    private Boolean deleted;
 
     public static final String COL_ID = "id";
 
-    public static final String COL_NAME = "name";
+    public static final String COL_ROLE_ID = "role_id";
 
-    public static final String COL_PARENT_ID = "parent_id";
+    public static final String COL_PERMISSION = "permission";
 
-    public static final String COL_CONTROLLER = "controller";
+    public static final String COL_ADD_TIME = "add_time";
 
-    public static final String COL_OPERATION = "operation";
+    public static final String COL_UPDATE_TIME = "update_time";
 
-    public static final String COL_LEVEL = "level";
-
-    public static final String COL_ORDER_NUM = "order_num";
+    public static final String COL_DELETED = "deleted";
 }

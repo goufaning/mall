@@ -1,7 +1,7 @@
 package com.goufaning.mall.bean.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.goufaning.mall.db.model.Permission;
+import com.goufaning.mall.db.model.AdminPermission;
 import lombok.Data;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class MenuVo {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     List<MenuVo> children;
 
-    public MenuVo(Permission permission) {
+    public MenuVo(AdminPermission permission) {
         this.id = permission.getId();
         this.authName = permission.getName();
         this.parentId = permission.getParentId();
