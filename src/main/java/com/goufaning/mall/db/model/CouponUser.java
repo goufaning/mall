@@ -5,9 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
 
 /**
 * $description
@@ -48,19 +49,19 @@ public class CouponUser extends Model {
      * 使用时间
      */
     @TableField(value = "used_time")
-    private Date usedTime;
+    private LocalDateTime usedTime;
 
     /**
      * 有效期开始时间
      */
     @TableField(value = "start_time")
-    private Date startTime;
+    private LocalDateTime startTime;
 
     /**
      * 有效期截至时间
      */
     @TableField(value = "end_time")
-    private Date endTime;
+    private LocalDateTime endTime;
 
     /**
      * 订单ID
@@ -72,13 +73,13 @@ public class CouponUser extends Model {
      * 创建时间
      */
     @TableField(value = "add_time")
-    private Date addTime;
+    private LocalDateTime addTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 逻辑删除

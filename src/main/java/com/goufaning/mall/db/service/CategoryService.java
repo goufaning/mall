@@ -50,6 +50,13 @@ public class CategoryService extends ServiceImpl<CategoryMapper, Category> {
         return listNotDeleted(queryWrapper);
     }
 
+    public List<Category> queryL2ByIds(List<Integer> ids) {
+        QueryWrapper<Category> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in(Category.COL_ID, ids);
+        queryWrapper.eq(Category.COL_LEVEL, "L2");
+        return listNotDeleted(queryWrapper);
+    }
+
     private List<Category> listNotDeleted(QueryWrapper<Category> queryWrapper) {
         queryWrapper.eq(Category.COL_DELETED, false);
         return list(queryWrapper);

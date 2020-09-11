@@ -5,19 +5,17 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDateTime;
+
 /**
-* $description
+* 收货地址表
 * @author goufn
 * @date 2020/8/31 11:46 上午
 * @version V1.0
 */
-/**
-    * 收货地址表
-    */
 @Data
 @EqualsAndHashCode(callSuper=true)
 @TableName(value = "mall_address")
@@ -89,13 +87,13 @@ public class Address extends Model {
      * 创建时间
      */
     @TableField(value = "add_time")
-    private Date addTime;
+    private LocalDateTime addTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 逻辑删除

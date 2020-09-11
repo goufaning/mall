@@ -12,11 +12,19 @@ public enum ResultCode implements IErrorCode {
      * 操作成功
      */
     SUCCESS(0, "操作成功"),
-    FAILED(500, "操作失败"),
+    FAILED(-1, "操作失败"),
     VALIDATE_FAILED(404, "参数检验失败"),
-    UNAUTHORIZED(401, "暂未登录或token已经过期"),
+    BAD_ARGUEMENT(401, "参数不对"),
     BAD_ARGUEMENT_VALUE(402, "参数值不对"),
-    FORBIDDEN(403, "没有相关权限");
+    FORBIDDEN(403, "没有相关权限"),
+    UN_LOGIN(501, "请登录"),
+    SERIOUS(502, "系统内部错误"),
+    UN_SUPPORT(503, "业务不支持"),
+    UPDATE_DATA_EXPIRED(504, "更新数据已经失效"),
+    UPDATE_DATA_FAILED(505, "更新数据失败"),
+    UNAUTHORIZED(506, "无操作权限"),
+
+    ;
     private int code;
     private String message;
 

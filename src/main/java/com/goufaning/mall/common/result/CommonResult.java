@@ -87,44 +87,52 @@ public class CommonResult<T> {
 
     /**
      * 失败返回结果
+     * @param code
+     * @param message
+     * @param <T>
+     * @return
+     */
+    public static <T> CommonResult<T> error(int code, String message) {
+        return new CommonResult<T>(code, message, null);
+    }
+
+    /**
+     * 失败返回结果
      */
     public static <T> CommonResult<T> error() {
         return error(ResultCode.FAILED);
     }
 
-    /**
-     * 参数验证失败返回结果
-     */
-    public static <T> CommonResult<T> validateFailed() {
-        return error(ResultCode.VALIDATE_FAILED);
-    }
-
-    /**
-     * 参数验证失败返回结果
-     *
-     * @param message 提示信息
-     */
-    public static <T> CommonResult<T> validateFailed(String message) {
-        return new CommonResult<T>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
-    }
-
-    /**
-     * 未登录返回结果
-     */
-    public static <T> CommonResult<T> unauthorized(T data) {
-        return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
-    }
-
-    /**
-     * 未授权返回结果
-     */
-    public static <T> CommonResult<T> forbidden(T data) {
-        return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
+    public static <T> CommonResult<T> badArgument() {
+        return error(ResultCode.BAD_ARGUEMENT);
     }
 
     public static <T> CommonResult<T> badArgumentValue() {
-        return new CommonResult<T>(ResultCode.BAD_ARGUEMENT_VALUE.getCode(), ResultCode.BAD_ARGUEMENT_VALUE.getMessage(), null);
+        return error(ResultCode.BAD_ARGUEMENT_VALUE);
     }
 
+    public static <T> CommonResult<T> unlogin() {
+        return error(ResultCode.UN_LOGIN);
+    }
+
+    public static <T> CommonResult<T> serious() {
+        return error(ResultCode.SERIOUS);
+    }
+
+    public static <T> CommonResult<T> unsupport() {
+        return error(ResultCode.UN_SUPPORT);
+    }
+
+    public static <T> CommonResult<T> updatedDateExpired() {
+        return error(ResultCode.UPDATE_DATA_EXPIRED);
+    }
+
+    public static <T> CommonResult<T> updatedDataFailed() {
+        return error(ResultCode.UPDATE_DATA_FAILED);
+    }
+
+    public static <T> CommonResult<T> unauthorized() {
+        return error(ResultCode.UNAUTHORIZED);
+    }
 }
 

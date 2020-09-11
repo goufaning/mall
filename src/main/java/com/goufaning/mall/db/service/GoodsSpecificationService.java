@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goufaning.mall.db.mapper.GoodsSpecificationMapper;
 import com.goufaning.mall.db.model.GoodsSpecification;
-import lombok.Data;
+import com.goufaning.mall.wx.vo.GoodsSpecificationVO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -49,17 +49,17 @@ public class GoodsSpecificationService extends ServiceImpl<GoodsSpecificationMap
      * @param id
      * @return
      */
-    public Object getSpecificationVoList(Integer id) {
+    public List<GoodsSpecificationVO> getSpecificationVoList(Integer id) {
         List<GoodsSpecification> goodsSpecificationList = queryByGid(id);
 
-        Map<String, VO> map = new HashMap<>();
-        List<VO> specificationVoList = new ArrayList<>();
+        Map<String, GoodsSpecificationVO> map = new HashMap<>();
+        List<GoodsSpecificationVO> specificationVoList = new ArrayList<>();
 
         for (GoodsSpecification goodsSpecification : goodsSpecificationList) {
             String specification = goodsSpecification.getSpecification();
-            VO goodsSpecificationVo = map.get(specification);
+            GoodsSpecificationVO goodsSpecificationVo = map.get(specification);
             if (goodsSpecificationVo == null) {
-                goodsSpecificationVo = new VO();
+                goodsSpecificationVo = new GoodsSpecificationVO();
                 goodsSpecificationVo.setName(specification);
                 List<GoodsSpecification> valueList = new ArrayList<>();
                 valueList.add(goodsSpecification);
@@ -74,10 +74,5 @@ public class GoodsSpecificationService extends ServiceImpl<GoodsSpecificationMap
         return specificationVoList;
     }
 
-    @Data
-    private class VO {
-        private String name;
-        private List<GoodsSpecification> valueList;
-    }
 
 }

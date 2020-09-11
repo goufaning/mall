@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
 * $description
@@ -117,25 +117,25 @@ public class Coupon extends Model {
      * 使用券开始时间
      */
     @TableField(value = "start_time")
-    private Date startTime;
+    private LocalDateTime startTime;
 
     /**
      * 使用券截至时间
      */
     @TableField(value = "end_time")
-    private Date endTime;
+    private LocalDateTime endTime;
 
     /**
      * 创建时间
      */
     @TableField(value = "add_time")
-    private Date addTime;
+    private LocalDateTime addTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     /**
      * 逻辑删除

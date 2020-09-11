@@ -1,11 +1,11 @@
 package com.goufaning.mall.db.service;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.goufaning.mall.db.model.Footprint;
 import com.goufaning.mall.db.mapper.FootprintMapper;
+import com.goufaning.mall.db.model.Footprint;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 /**
 * $description
 * @author goufn
@@ -14,5 +14,11 @@ import com.goufaning.mall.db.mapper.FootprintMapper;
 */
 @Service
 public class FootprintService extends ServiceImpl<FootprintMapper, Footprint> {
+
+    public void add(Footprint footprint) {
+        footprint.setAddTime(LocalDateTime.now());
+        footprint.setUpdateTime(LocalDateTime.now());
+        footprint.insert();
+    }
 
 }
